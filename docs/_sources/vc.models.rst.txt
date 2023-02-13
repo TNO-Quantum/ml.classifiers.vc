@@ -1,0 +1,7 @@
+vc.models module
+================
+
+.. automodule:: vc.models
+   :members:
+   :undoc-members:
+   :show-inheritance:

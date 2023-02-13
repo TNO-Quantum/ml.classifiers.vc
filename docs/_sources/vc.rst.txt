@@ -1,0 +1,16 @@
+vc package
+==========
+
+.. automodule:: vc
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+.. toctree::
+   :maxdepth: 4
+
+
+   vc.models
+   vc.optimizers
+   vc.variational_classifier

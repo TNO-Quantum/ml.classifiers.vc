@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TNO Quantum &mdash; tno.quantum.ml.classifiers.vc</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/TNO_zwart.ico"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="vc package" href="vc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> tno.quantum.ml.classifiers.vc
+            <img src="_static/TNO_wit.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vc.html">vc package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vc.models.html">vc.models module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vc.optimizers.html">vc.optimizers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vc.variational_classifier.html">vc.variational_classifier module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">tno.quantum.ml.classifiers.vc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">TNO Quantum</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tno-quantum">
+<h1>TNO Quantum<a class="headerlink" href="#tno-quantum" title="Permalink to this heading"></a></h1>
+<p>TNO Quantum provides generic software components aimed at facilitating the development of quantum applications.</p>
+<section id="vc">
+<h2>VC<a class="headerlink" href="#vc" title="Permalink to this heading"></a></h2>
+<p>VC is part of TNO Quantum and provides a Python implementation
+of a Variational Quantum Classifier.</p>
+<p>The implementation (see the <a class="reference internal" href="vc.variational_classifier.html#vc.variational_classifier.VariationalClassifier" title="vc.variational_classifier.VariationalClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">VariationalClassifier</span></code></a> class) has been done in accordance with
+the <a class="reference external" href="https://scikit-learn.org/stable/developers/develop.html">scikit-learn estimator API</a>,
+which means that the classifier can be used as any other (binary and multiclass)
+scikit-learn classifier and
+combined with transforms through <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html">Pipelines</a>.
+In addition, the <a class="reference internal" href="vc.variational_classifier.html#vc.variational_classifier.VariationalClassifier" title="vc.variational_classifier.VariationalClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">VariationalClassifier</span></code></a> makes use of <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html">PyTorch</a>
+tensors, optimizers, and loss functions.</p>
+</section>
+<section id="quick-install">
+<h2>Quick Install<a class="headerlink" href="#quick-install" title="Permalink to this heading"></a></h2>
+<p>VC can be installed using pip as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">tno</span><span class="o">.</span><span class="n">quantum</span><span class="o">.</span><span class="n">ml</span><span class="o">.</span><span class="n">classifiers</span><span class="o">.</span><span class="n">vc</span>
+</pre></div>
+</div>
+<p>Optionally (though required for the examples below), you can install the test datasets:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">tno</span><span class="o">.</span><span class="n">quantum</span><span class="o">.</span><span class="n">ml</span><span class="o">.</span><span class="n">datasets</span>
+</pre></div>
+</div>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<p>Here’s an example of how the <a class="reference internal" href="vc.variational_classifier.html#vc.variational_classifier.VariationalClassifier" title="vc.variational_classifier.VariationalClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">VariationalClassifier</span></code></a> class can be used for
+classification based on the
+<a class="reference external" href="https://en.wikipedia.org/wiki/Iris_flower_data_set">Iris dataset</a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tno.quantum.ml.classifiers.vc</span> <span class="kn">import</span> <span class="n">VariationalClassifier</span>
+<span class="kn">from</span> <span class="nn">tno.quantum.ml.datasets</span> <span class="kn">import</span> <span class="n">get_iris_dataset</span>
+
+<span class="n">X_training</span><span class="p">,</span> <span class="n">y_training</span><span class="p">,</span> <span class="n">X_validation</span><span class="p">,</span> <span class="n">y_validation</span> <span class="o">=</span> <span class="n">get_iris_dataset</span><span class="p">()</span>
+<span class="n">vc</span> <span class="o">=</span> <span class="n">VariationalClassifier</span><span class="p">()</span>
+<span class="n">vc</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_training</span><span class="p">,</span> <span class="n">y_training</span><span class="p">)</span>
+<span class="n">predictions_validation</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_validation</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="backends">
+<h2>Backends<a class="headerlink" href="#backends" title="Permalink to this heading"></a></h2>
+<p>Internally, the <a class="reference internal" href="vc.variational_classifier.html#vc.variational_classifier.VariationalClassifier" title="vc.variational_classifier.VariationalClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">VariationalClassifier</span></code></a> class makes use of hybrid classical/quantum
+models to represent a function to be learned. These quantum models give rise to circuits
+which can be run on different backends, such as quantum hardware and quantum simulators.</p>
+<p>Backends are selected by closely following the <a class="reference external" href="https://pennylane.ai/">PennyLane</a>
+interface for specifying
+<a class="reference external" href="https://docs.pennylane.ai/en/stable/introduction/circuits.html#defining-a-device">devices</a>.
+As a result, <a class="reference external" href="https://pennylane.ai/plugins.html">PennyLane plugins</a> are also supported.
+Here’s an example showcasing how <a class="reference external" href="https://www.quantum-inspire.com/">Quantum Inspire</a>
+hardware can be used through the
+<a class="reference external" href="https://github.com/QuTech-Delft/pennylane-quantuminspire">PennyLane-QuantumInspire</a> plugin (note that
+you will need to install the plugin as described
+<a class="reference external" href="https://github.com/QuTech-Delft/pennylane-quantuminspire/blob/master/README.rst">here</a>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tno.quantum.ml.classifiers.vc</span> <span class="kn">import</span> <span class="n">VariationalClassifier</span>
+<span class="kn">from</span> <span class="nn">tno.quantum.ml.datasets</span> <span class="kn">import</span> <span class="n">get_wine_dataset</span>
+
+<span class="n">X_training</span><span class="p">,</span> <span class="n">y_training</span><span class="p">,</span> <span class="n">X_validation</span><span class="p">,</span> <span class="n">y_validation</span> <span class="o">=</span> <span class="n">get_wine_dataset</span><span class="p">(</span>
+    <span class="n">n_features</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+<span class="n">vc</span> <span class="o">=</span> <span class="n">VariationalClassifier</span><span class="p">(</span>
+    <span class="n">backend</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;quantuminspire.qi&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;backend&quot;</span><span class="p">:</span> <span class="s2">&quot;Starmon-5&quot;</span><span class="p">,</span> <span class="s2">&quot;project&quot;</span><span class="p">:</span> <span class="s2">&quot;my project&quot;</span><span class="p">},</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+<span class="n">vc</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_training</span><span class="p">,</span> <span class="n">y_training</span><span class="p">)</span>
+<span class="n">predictions_validation</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_validation</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As an alternative example, here’s how the <cite>default.qubit</cite> simulator provided
+by PennyLane can be specified by the <code class="docutils literal notranslate"><span class="pre">backend</span></code> keyword:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">backend</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;default.qubit&quot;</span><span class="p">,</span> <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">{}}</span>
+</pre></div>
+</div>
+</section>
+<section id="quantum-models">
+<h2>Quantum Models<a class="headerlink" href="#quantum-models" title="Permalink to this heading"></a></h2>
+<p>A quantum model defines a quantum circuit and a strategy for classical post-processing
+of measurements. Currently, two models are available:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">&quot;expected_values_model&quot;</span></code>, as implemented by the <a class="reference internal" href="vc.models.html#vc.models.ExpectedValuesModel" title="vc.models.ExpectedValuesModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExpectedValuesModel</span></code></a> class
+(see <a class="reference internal" href="vc.models.html#vc.models.ExpectedValuesModel.get_qfunc" title="vc.models.ExpectedValuesModel.get_qfunc"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_qfunc()</span></code></a> for details on the post-processing strategy).</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">&quot;probabilities_model&quot;</span></code>, as implemented by the <a class="reference internal" href="vc.models.html#vc.models.ProbabilitiesModel" title="vc.models.ProbabilitiesModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProbabilitiesModel</span></code></a> class
+(see <a class="reference internal" href="vc.models.html#vc.models.ProbabilitiesModel.get_qfunc" title="vc.models.ProbabilitiesModel.get_qfunc"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_qfunc()</span></code></a> for details on the post-processing strategy).</p></li>
+</ul>
+<p>For example, the <code class="docutils literal notranslate"><span class="pre">&quot;probabilities_model&quot;</span></code> can be specified with the
+<code class="docutils literal notranslate"><span class="pre">model</span></code> keyword as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tno.quantum.ml.classifiers.vc</span> <span class="kn">import</span> <span class="n">VariationalClassifier</span>
+<span class="kn">from</span> <span class="nn">tno.quantum.ml.datasets</span> <span class="kn">import</span> <span class="n">get_iris_dataset</span>
+
+<span class="n">X_training</span><span class="p">,</span> <span class="n">y_training</span><span class="p">,</span> <span class="n">X_validation</span><span class="p">,</span> <span class="n">y_validation</span> <span class="o">=</span> <span class="n">get_iris_dataset</span><span class="p">(</span>
+    <span class="n">n_features</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+<span class="n">vc</span> <span class="o">=</span> <span class="n">VariationalClassifier</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;probabilities_model&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;n_layers&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;n_trainable_sublayers&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;scaling&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">},</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+<span class="n">vc</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_training</span><span class="p">,</span> <span class="n">y_training</span><span class="p">)</span>
+<span class="n">predictions_validation</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_validation</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="developing-new-quantum-models">
+<h2>Developing New Quantum Models<a class="headerlink" href="#developing-new-quantum-models" title="Permalink to this heading"></a></h2>
+<p>Quantum models are developed using PennyLane and can be found in the
+<a class="reference internal" href="vc.models.html#module-vc.models" title="vc.models"><code class="xref py py-mod docutils literal notranslate"><span class="pre">models</span></code></a> module.
+New models can be implemented by extending from <a class="reference internal" href="vc.models.html#vc.models.QModel" title="vc.models.QModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">QModel</span></code></a>
+and adding them to <a class="reference internal" href="vc.models.html#vc.models.get_model" title="vc.models.get_model"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_model()</span></code></a>.</p>
+</section>
+<section id="support-for-pytorch-optimizers">
+<h2>Support for PyTorch Optimizers<a class="headerlink" href="#support-for-pytorch-optimizers" title="Permalink to this heading"></a></h2>
+<p>The currently supported optimizers can be found in the <a class="reference internal" href="vc.optimizers.html#module-vc.optimizers" title="vc.optimizers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">optimizers</span></code></a> module.
+Other PyTorch optimizers can be added in <a class="reference internal" href="vc.optimizers.html#vc.optimizers.get_optimizer" title="vc.optimizers.get_optimizer"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_optimizer()</span></code></a>.</p>
+</section>
+<section id="end-use-limitations">
+<h2>(End)use Limitations<a class="headerlink" href="#end-use-limitations" title="Permalink to this heading"></a></h2>
+<p>The content of this software may solely be used for applications that comply with international export control laws.</p>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="vc.html" class="btn btn-neutral float-right" title="vc package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-2023, TNO Quantum.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+vc.optimizers module
+====================
+
+.. automodule:: vc.optimizers
+   :members:
+   :undoc-members:
+   :show-inheritance:

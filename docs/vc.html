@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>vc package &mdash; tno.quantum.ml.classifiers.vc</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/TNO_zwart.ico"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="vc.models module" href="vc.models.html" />
+    <link rel="prev" title="TNO Quantum" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> tno.quantum.ml.classifiers.vc
+            <img src="_static/TNO_wit.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">vc package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vc.models.html">vc.models module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vc.optimizers.html">vc.optimizers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vc.variational_classifier.html">vc.variational_classifier module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">tno.quantum.ml.classifiers.vc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">vc package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/vc.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-vc">
+<span id="vc-package"></span><h1>vc package<a class="headerlink" href="#module-vc" title="Permalink to this heading"></a></h1>
+<p>Microlib tno.quantum.ml.classifiers.vc</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="vc.VariationalClassifier">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vc.</span></span><span class="sig-name descname"><span class="pre">VariationalClassifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warm_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tno/quantum/ml/classifiers/vc/variational_classifier.html#VariationalClassifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vc.VariationalClassifier" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ClassifierMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseEstimator</span></code></p>
+<p>Variational classifier.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="vc.VariationalClassifier.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warm_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tno/quantum/ml/classifiers/vc/variational_classifier.html#VariationalClassifier.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vc.VariationalClassifier.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Init VariationalClassifier.</p>
+<p>The default values for <code class="docutils literal notranslate"><span class="pre">backend</span></code>, <code class="docutils literal notranslate"><span class="pre">model</span></code>, and <code class="docutils literal notranslate"><span class="pre">optimizer</span></code> are
+defined in <a class="reference internal" href="vc.variational_classifier.html#vc.variational_classifier.get_default_if_none" title="vc.variational_classifier.get_default_if_none"><code class="xref py py-func docutils literal notranslate"><span class="pre">vc.variational_classifier.get_default_if_none()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>batch_size</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – batch size to be used during fitting.</p></li>
+<li><p><strong>backend</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]) – see docstring of <a class="reference internal" href="vc.models.html#vc.models.get_model" title="vc.models.get_model"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_model()</span></code></a>.</p></li>
+<li><p><strong>model</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]) – see docstring of <a class="reference internal" href="vc.models.html#vc.models.get_model" title="vc.models.get_model"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_model()</span></code></a>.</p></li>
+<li><p><strong>optimizer</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]) – see docstring of <a class="reference internal" href="vc.optimizers.html#vc.optimizers.get_optimizer" title="vc.optimizers.get_optimizer"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_optimizer()</span></code></a></p></li>
+<li><p><strong>use_bias</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> if a bias parameter should be optimized over.</p></li>
+<li><p><strong>random_init</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> if parameters to optimize over should be
+initialized randomly.</p></li>
+<li><p><strong>warm_init</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – set to <code class="docutils literal notranslate"><span class="pre">True</span></code> if parameters from a previous call to fit
+should be used.</p></li>
+<li><p><strong>random_state</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – random seed for repeatability.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vc.VariationalClassifier.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tno/quantum/ml/classifiers/vc/variational_classifier.html#VariationalClassifier.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vc.VariationalClassifier.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Fit data using a quantum model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<code class="xref py py-const docutils literal notranslate"><span class="pre">ArrayLike</span></code>) – training data with shape (<cite>n_samples</cite>, <cite>n_features</cite>).</p></li>
+<li><p><strong>y</strong> (<code class="xref py py-const docutils literal notranslate"><span class="pre">ArrayLike</span></code>) – target values with shape (<cite>n_samples</cite>,).</p></li>
+<li><p><strong>n_iter</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – number of training iterations.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#vc.VariationalClassifier" title="tno.quantum.ml.classifiers.vc.variational_classifier.VariationalClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">VariationalClassifier</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vc.VariationalClassifier.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tno/quantum/ml/classifiers/vc/variational_classifier.html#VariationalClassifier.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vc.VariationalClassifier.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predict class using a quantum model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<code class="xref py py-const docutils literal notranslate"><span class="pre">ArrayLike</span></code>) – input data with shape (<cite>n_samples</cite>  <cite>n_features</cite>).</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">dtype</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The predicted classes with shape (<cite>n_samples</cite>, <cite>n_classes</cite>).</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vc.models.html">vc.models module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vc.models.html#vc.models.ExpectedValuesModel"><code class="docutils literal notranslate"><span class="pre">ExpectedValuesModel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vc.models.html#vc.models.ExpectedValuesModel.__init__"><code class="docutils literal notranslate"><span class="pre">ExpectedValuesModel.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vc.models.html#vc.models.ExpectedValuesModel.get_init_weights"><code class="docutils literal notranslate"><span class="pre">ExpectedValuesModel.get_init_weights()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vc.models.html#vc.models.ExpectedValuesModel.get_qfunc"><code class="docutils literal notranslate"><span class="pre">ExpectedValuesModel.get_qfunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vc.models.html#vc.models.ExpectedValuesModel.preprocess"><code class="docutils literal notranslate"><span class="pre">ExpectedValuesModel.preprocess()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vc.models.html#vc.models.ModelError"><code class="docutils literal notranslate"><span class="pre">ModelError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vc.models.html#vc.models.ModelError.__init__"><code class="docutils literal notranslate"><span class="pre">ModelError.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vc.models.html#vc.models.ProbabilitiesModel"><code class="docutils literal notranslate"><span class="pre">ProbabilitiesModel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vc.models.html#vc.models.ProbabilitiesModel.__init__"><code class="docutils literal notranslate"><span class="pre">ProbabilitiesModel.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vc.models.html#vc.models.ProbabilitiesModel.get_init_weights"><code class="docutils literal notranslate"><span class="pre">ProbabilitiesModel.get_init_weights()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vc.models.html#vc.models.ProbabilitiesModel.get_qfunc"><code class="docutils literal notranslate"><span class="pre">ProbabilitiesModel.get_qfunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vc.models.html#vc.models.ProbabilitiesModel.preprocess"><code class="docutils literal notranslate"><span class="pre">ProbabilitiesModel.preprocess()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vc.models.html#vc.models.QModel"><code class="docutils literal notranslate"><span class="pre">QModel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vc.models.html#vc.models.QModel.__init__"><code class="docutils literal notranslate"><span class="pre">QModel.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vc.models.html#vc.models.QModel.get_init_weights"><code class="docutils literal notranslate"><span class="pre">QModel.get_init_weights()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vc.models.html#vc.models.QModel.get_qfunc"><code class="docutils literal notranslate"><span class="pre">QModel.get_qfunc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vc.models.html#vc.models.QModel.preprocess"><code class="docutils literal notranslate"><span class="pre">QModel.preprocess()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vc.models.html#vc.models.get_model"><code class="docutils literal notranslate"><span class="pre">get_model()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vc.optimizers.html">vc.optimizers module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vc.optimizers.html#vc.optimizers.get_optimizer"><code class="docutils literal notranslate"><span class="pre">get_optimizer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vc.variational_classifier.html">vc.variational_classifier module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vc.variational_classifier.html#vc.variational_classifier.VariationalClassifier"><code class="docutils literal notranslate"><span class="pre">VariationalClassifier</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vc.variational_classifier.html#vc.variational_classifier.VariationalClassifier.__init__"><code class="docutils literal notranslate"><span class="pre">VariationalClassifier.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vc.variational_classifier.html#vc.variational_classifier.VariationalClassifier.fit"><code class="docutils literal notranslate"><span class="pre">VariationalClassifier.fit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vc.variational_classifier.html#vc.variational_classifier.VariationalClassifier.predict"><code class="docutils literal notranslate"><span class="pre">VariationalClassifier.predict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vc.variational_classifier.html#vc.variational_classifier.get_default_if_none"><code class="docutils literal notranslate"><span class="pre">get_default_if_none()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="TNO Quantum" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vc.models.html" class="btn btn-neutral float-right" title="vc.models module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-2023, TNO Quantum.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
