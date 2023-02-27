@@ -8,7 +8,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.utils.estimator_checks import check_estimator
 
 from tno.quantum.ml.classifiers.vc import VariationalClassifier
-from tno.quantum.ml.classifiers.vc.models import ModelError
+from tno.quantum.ml.classifiers.vc.models import ModelError, ParityModel
+from tno.quantum.ml.classifiers.vc.utils import get_bin
 from tno.quantum.ml.datasets import get_iris_dataset, get_wine_dataset
 
 # pylint: disable=invalid-name
@@ -55,6 +56,13 @@ def _std_scale(
             {"name": "default.qubit", "options": {}},
             {"name": "default.qubit", "options": {}},
             "probabilities_model",
+            False,
+            [160],
+        ),
+        (
+            {"name": "default.qubit", "options": {}},
+            {"name": "default.qubit", "options": {}},
+            "parity_model",
             False,
             [160],
         ),
@@ -132,6 +140,12 @@ def test_variational_classifier_two_classes(
         (
             {"name": "default.qubit", "options": {}},
             "probabilities_model",
+            [80],
+            0.8,
+        ),
+        (
+            {"name": "default.qubit", "options": {}},
+            "parity_model",
             [80],
             0.8,
         ),
@@ -254,7 +268,9 @@ def test_one_class_warning() -> None:
         vc = vc.fit(X_training, y_training, n_iter=1)
 
 
-@pytest.mark.parametrize("model_name", ["probabilities_model", "expected_values_model"])
+@pytest.mark.parametrize(
+    "model_name", ["probabilities_model", "expected_values_model", "parity_model"]
+)
 def test_maximum_number_of_classes(model_name: str) -> None:
     # Load training data
     X_training, y_training, _, _ = get_iris_dataset(
@@ -326,6 +342,74 @@ def test_non_random_init(model_name: str) -> None:
     vc = vc.fit(X_training, y_training, n_iter=1)
 
     assert True
+
+
+@pytest.mark.parametrize("num_qubits", [1, 2, 5, 10])
+def test_class_assignment_parity_model_two_classes(num_qubits: int) -> None:
+    for i in range(2**num_qubits):
+        bit_array = get_bin(i, num_qubits)
+        model_assignment = ParityModel.get_class_from_bit_array(bit_array, m=1)
+        parity = sum(int(_) for _ in bit_array) % 2
+        assert parity == model_assignment
+
+
+@pytest.mark.parametrize(
+    "assignment_dict,m",
+    [
+        (
+            {
+                0: ["000", "110"],
+                1: ["010", "100"],
+                2: ["001", "111"],
+                3: ["011", "101"],
+            },
+            2,
+        ),
+        (
+            {
+                0: ["000"],
+                1: ["100"],
+                2: ["010"],
+                3: ["110"],
+                4: ["001"],
+                5: ["101"],
+                6: ["011"],
+                7: ["111"],
+            },
+            3,
+        ),
+        (
+            {
+                0: ["0000", "0110", "1010", "1100"],
+                1: ["0010", "0100", "1000", "1110"],
+                2: ["0001", "0111", "1011", "1101"],
+                3: ["0011", "0101", "1001", "1111"],
+            },
+            2,
+        ),
+        (
+            {
+                0: ["00000", "01100", "10100", "11000"],
+                1: ["00100", "01000", "10000", "11100"],
+                2: ["00010", "01110", "10110", "11010"],
+                3: ["00110", "01010", "10010", "11110"],
+                4: ["00001", "01101", "10101", "11001"],
+                5: ["00101", "01001", "10001", "11101"],
+                6: ["00011", "01111", "10111", "11011"],
+                7: ["00111", "01011", "10011", "11111"],
+            },
+            3,
+        ),
+    ],
+)
+def test_class_assignment_parity_model(
+    assignment_dict: Dict[int, List[str]], m: int
+) -> None:
+    for class_id, bit_strings in assignment_dict.items():
+        for bit_string in bit_strings:
+            bit_array = np.array([int(_) for _ in bit_string])
+            model_assignment = ParityModel.get_class_from_bit_array(bit_array, m)
+            assert model_assignment == class_id
 
 
 def test_invalid_optimizer() -> None:
