@@ -47,7 +47,7 @@ def get_default_if_none(
         backend: see docstring of :py:func:`~vc.models.get_model`.
           default value ``{"name": "default.qubit", "options": {}}``.
         model: see docstring of :py:func:`~vc.models.get_model`
-          default value ``{"name": "probabilities_model",
+          default value ``{"name": "modulo_model",
           "options": {"n_layers": 2, "n_trainable_sublayers": 2, "scaling": 0.5}}``.
         optimizer: see docstring of :py:func:`~vc.optimizers.get_optimizer`
           default value ``{"name": "adam", "options": {}}``.
@@ -59,7 +59,7 @@ def get_default_if_none(
         backend = {"name": "default.qubit", "options": {}}
     if model is None:
         model = {
-            "name": "probabilities_model",
+            "name": "modulo_model",
             "options": {"n_layers": 2, "n_trainable_sublayers": 2, "scaling": 0.5},
         }
     if optimizer is None:

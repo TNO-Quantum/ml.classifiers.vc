@@ -8,12 +8,13 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.utils.estimator_checks import check_estimator
 
 from tno.quantum.ml.classifiers.vc import VariationalClassifier
-from tno.quantum.ml.classifiers.vc.models import ModelError
+from tno.quantum.ml.classifiers.vc.models import ModelError, ParityModel
 from tno.quantum.ml.datasets import get_iris_dataset, get_wine_dataset
 
 # pylint: disable=invalid-name
 # pylint: disable=missing-function-docstring
 # pylint: disable=too-many-arguments
+# pylint: disable=protected-access
 
 
 def test_sklearn_compliance() -> None:
@@ -54,7 +55,14 @@ def _std_scale(
         (
             {"name": "default.qubit", "options": {}},
             {"name": "default.qubit", "options": {}},
-            "probabilities_model",
+            "modulo_model",
+            False,
+            [160],
+        ),
+        (
+            {"name": "default.qubit", "options": {}},
+            {"name": "default.qubit", "options": {}},
+            "parity_model",
             False,
             [160],
         ),
@@ -131,7 +139,13 @@ def test_variational_classifier_two_classes(
         ),
         (
             {"name": "default.qubit", "options": {}},
-            "probabilities_model",
+            "modulo_model",
+            [80],
+            0.8,
+        ),
+        (
+            {"name": "default.qubit", "options": {}},
+            "parity_model",
             [80],
             0.8,
         ),
@@ -254,7 +268,9 @@ def test_one_class_warning() -> None:
         vc = vc.fit(X_training, y_training, n_iter=1)
 
 
-@pytest.mark.parametrize("model_name", ["probabilities_model", "expected_values_model"])
+@pytest.mark.parametrize(
+    "model_name", ["modulo_model", "expected_values_model", "parity_model"]
+)
 def test_maximum_number_of_classes(model_name: str) -> None:
     # Load training data
     X_training, y_training, _, _ = get_iris_dataset(
@@ -306,7 +322,9 @@ def test_cold_warm_fit() -> None:
         vc = vc.fit(X_training, y_training, n_iter=1)
 
 
-@pytest.mark.parametrize("model_name", ["probabilities_model", "expected_values_model"])
+@pytest.mark.parametrize(
+    "model_name", ["modulo_model", "expected_values_model", "parity_model"]
+)
 def test_non_random_init(model_name: str) -> None:
     # Load training data
     X_training, y_training, _, _ = get_iris_dataset(
@@ -326,6 +344,70 @@ def test_non_random_init(model_name: str) -> None:
     vc = vc.fit(X_training, y_training, n_iter=1)
 
     assert True
+
+
+def test_maximal_class_assignment_parity_model() -> None:
+    # Check that all class assignments correspond to a flip of the bitstring.
+    n_bits = 5
+    for idx in range(int(2**n_bits)):
+        assert (
+            int(
+                np.binary_repr(ParityModel._f(idx, n_bits, n_bits), width=n_bits)[::-1],
+                2,
+            )
+            == idx
+        )
+
+
+@pytest.mark.parametrize(
+    "n_bits_in,n_bits_out,assignments",
+    [
+        (4, 2, [0, 2, 1, 3, 1, 3, 0, 2, 1, 3, 0, 2, 0, 2, 1, 3]),
+        (
+            5,
+            3,
+            [
+                0,
+                4,
+                2,
+                6,
+                1,
+                5,
+                3,
+                7,
+                1,
+                5,
+                3,
+                7,
+                0,
+                4,
+                2,
+                6,
+                1,
+                5,
+                3,
+                7,
+                0,
+                4,
+                2,
+                6,
+                0,
+                4,
+                2,
+                6,
+                1,
+                5,
+                3,
+                7,
+            ],
+        ),
+    ],
+)
+def test_class_assignment_parity_model(
+    n_bits_in: int, n_bits_out: int, assignments: List[int]
+) -> None:
+    for idx, class_id in enumerate(assignments):
+        assert ParityModel._f(idx, n_bits_in, n_bits_out) == class_id
 
 
 def test_invalid_optimizer() -> None:

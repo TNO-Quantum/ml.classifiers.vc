@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>vc.models module &mdash; tno.quantum.ml.classifiers.vc</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-    <link rel="shortcut icon" href="_static/TNO_zwart.ico"/>
+    <link rel="shortcut icon" href="_static/TNO_blue.ico"/>
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -33,21 +33,25 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> tno.quantum.ml.classifiers.vc
-            <img src="_static/TNO_wit.svg" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            tno.quantum.ml.classifiers.vc
+              <img src="_static/TNO_wit.svg" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                1.0.1
+                2.0.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="vc.html">vc package</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">vc.models module</a></li>
@@ -70,7 +74,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="vc.html">vc package</a></li>
       <li class="breadcrumb-item active">vc.models module</li>
       <li class="wy-breadcrumbs-aside">
@@ -109,7 +113,7 @@ interface and update <a class="reference internal" href="#vc.models.get_model" t
 </ul>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>backend</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]) – see docstring of <a class="reference internal" href="#vc.models.QModel" title="vc.models.QModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">QModel</span></code></a>.</p></li>
 <li><p><strong>n_classes</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – see docstring of <a class="reference internal" href="#vc.models.QModel" title="vc.models.QModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">QModel</span></code></a>.</p></li>
@@ -127,7 +131,7 @@ interface and update <a class="reference internal" href="#vc.models.get_model" t
 <span class="sig-name descname"><span class="pre">get_init_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">random</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/vc/models.html#ExpectedValuesModel.get_init_weights"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vc.models.ExpectedValuesModel.get_init_weights" title="Permalink to this definition"></a></dt>
 <dd><p>Get init weights between 0 and <span class="math notranslate nohighlight">\(2\pi\)</span>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">dtype</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float64</span></code>]]</p>
 </dd>
 </dl>
@@ -138,7 +142,7 @@ interface and update <a class="reference internal" href="#vc.models.get_model" t
 <span class="sig-name descname"><span class="pre">get_qfunc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/vc/models.html#ExpectedValuesModel.get_qfunc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vc.models.ExpectedValuesModel.get_qfunc" title="Permalink to this definition"></a></dt>
 <dd><p>Define callable based on circuit.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-class docutils literal notranslate"><span class="pre">TensorType</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">TensorType</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">TensorType</span></code>]</p>
 </dd>
 </dl>
@@ -149,13 +153,13 @@ interface and update <a class="reference internal" href="#vc.models.get_model" t
 <span class="sig-name descname"><span class="pre">preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_max</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/vc/models.html#ExpectedValuesModel.preprocess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vc.models.ExpectedValuesModel.preprocess" title="Permalink to this definition"></a></dt>
 <dd><p>Maps input <code class="docutils literal notranslate"><span class="pre">X</span></code> in the range <code class="docutils literal notranslate"><span class="pre">min_max</span></code> to <span class="math notranslate nohighlight">\((-\pi, \pi]\)</span>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<code class="xref py py-const docutils literal notranslate"><span class="pre">ArrayLike</span></code>) – input data with shape (<cite>n_samples</cite>, <cite>n_features</cite>).</p></li>
 <li><p><strong>min_max</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – minimum value and maximum value.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">dtype</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float64</span></code>]]</p>
 </dd>
 </dl>
@@ -177,10 +181,51 @@ interface and update <a class="reference internal" href="#vc.models.get_model" t
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="vc.models.ModuloModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vc.models.</span></span><span class="sig-name descname"><span class="pre">ModuloModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backend</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_trainable_sublayers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/vc/models.html#ModuloModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vc.models.ModuloModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vc.models.ProbabilitiesModel" title="vc.models.ProbabilitiesModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProbabilitiesModel</span></code></a></p>
+<p>Model that uses post-processing with modulo.</p>
+<p>See docstring of <a class="reference internal" href="#vc.models.ProbabilitiesModel" title="vc.models.ProbabilitiesModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">vc.models.ProbabilitiesModel</span></code></a>.</p>
+<p>The post-processing strategy assigns a class to an <span class="math notranslate nohighlight">\(n\)</span>-bit string
+<span class="math notranslate nohighlight">\(b\)</span> according to the following formula:</p>
+<div class="math notranslate nohighlight">
+\[f(b) = \left[b\right]_{10} \mod M\]</div>
+<p>where:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(M\)</span> is the number of classes,</p></li>
+<li><p><span class="math notranslate nohighlight">\([\cdot]_{10}\)</span> is the decimal representation of the argument.</p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="vc.models.ParityModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vc.models.</span></span><span class="sig-name descname"><span class="pre">ParityModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backend</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_trainable_sublayers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/vc/models.html#ParityModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vc.models.ParityModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vc.models.ProbabilitiesModel" title="vc.models.ProbabilitiesModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProbabilitiesModel</span></code></a></p>
+<p>Model that uses parity post-processing.</p>
+<p>See docstring of <a class="reference internal" href="#vc.models.ProbabilitiesModel" title="vc.models.ProbabilitiesModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">vc.models.ProbabilitiesModel</span></code></a>.</p>
+<p>The post-processing strategy assigns a class to an <span class="math notranslate nohighlight">\(n\)</span>-bit string <span class="math notranslate nohighlight">\(b\)</span>
+according to the following formula:</p>
+<div class="math notranslate nohighlight">
+\[f(b) = \left[b_0 ... b_{m-2}\left(\bigoplus_{i=m-1}^{n-1} b_i\right) \right]_{10}\]</div>
+<p>where:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(m=\lceil \log_2(M) \rceil\)</span> with <span class="math notranslate nohighlight">\(M\)</span> being the number of classes,</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span> is the number of bits,</p></li>
+<li><p><span class="math notranslate nohighlight">\([\cdot]_{10}\)</span> is the decimal representation of the argument.</p></li>
+</ul>
+</div></blockquote>
+<p>Reference: <a class="reference external" href="https://arxiv.org/abs/2212.06663v1">“Quantum Policy Gradient Algorithm with Optimized Action Decoding”
+by Meyer et al.</a></p>
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="vc.models.ProbabilitiesModel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vc.models.</span></span><span class="sig-name descname"><span class="pre">ProbabilitiesModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backend</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_trainable_sublayers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/vc/models.html#ProbabilitiesModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vc.models.ProbabilitiesModel" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vc.models.QModel" title="vc.models.QModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">QModel</span></code></a></p>
-<p>Model that uses angle encoding and state probabilities.</p>
+<dd><p>Bases: <a class="reference internal" href="#vc.models.QModel" title="vc.models.QModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">QModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Generic model that uses probabilities.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vc.models.ProbabilitiesModel.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backend</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_trainable_sublayers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/vc/models.html#ProbabilitiesModel.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vc.models.ProbabilitiesModel.__init__" title="Permalink to this definition"></a></dt>
@@ -198,14 +243,14 @@ interface and update <a class="reference internal" href="#vc.models.get_model" t
 </ul>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>backend</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]) – see docstring of <a class="reference internal" href="#vc.models.QModel" title="vc.models.QModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">QModel</span></code></a>.</p></li>
 <li><p><strong>n_classes</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – see docstring of <a class="reference internal" href="#vc.models.QModel" title="vc.models.QModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">QModel</span></code></a>.</p></li>
 <li><p><strong>n_layers</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – number of layers in <span class="math notranslate nohighlight">\(U(x)\)</span> (equal to <span class="math notranslate nohighlight">\(L\)</span>).</p></li>
 <li><p><strong>n_trainable_sublayers</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – number of layers for each <span class="math notranslate nohighlight">\(W\)</span>.</p></li>
 <li><p><strong>scaling</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – scaling to apply to the preprocessed data, see
-<a class="reference internal" href="#vc.models.ExpectedValuesModel.preprocess" title="vc.models.ExpectedValuesModel.preprocess"><code class="xref py py-meth docutils literal notranslate"><span class="pre">preprocess()</span></code></a>.</p></li>
+<a class="reference internal" href="#vc.models.ProbabilitiesModel.preprocess" title="vc.models.ProbabilitiesModel.preprocess"><code class="xref py py-meth docutils literal notranslate"><span class="pre">preprocess()</span></code></a>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -216,7 +261,7 @@ interface and update <a class="reference internal" href="#vc.models.get_model" t
 <span class="sig-name descname"><span class="pre">get_init_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">random</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/vc/models.html#ProbabilitiesModel.get_init_weights"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vc.models.ProbabilitiesModel.get_init_weights" title="Permalink to this definition"></a></dt>
 <dd><p>Get init weights between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(2\pi\)</span>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">dtype</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float64</span></code>]]</p>
 </dd>
 </dl>
@@ -225,13 +270,9 @@ interface and update <a class="reference internal" href="#vc.models.get_model" t
 <dl class="py method">
 <dt class="sig sig-object py" id="vc.models.ProbabilitiesModel.get_qfunc">
 <span class="sig-name descname"><span class="pre">get_qfunc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/vc/models.html#ProbabilitiesModel.get_qfunc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vc.models.ProbabilitiesModel.get_qfunc" title="Permalink to this definition"></a></dt>
-<dd><p>Define callable based on circuit.</p>
-<p>This callable will aggregate (by averaging) the probabilities per output
-state into an array with as many elements as classes we have. Note: in order
-to make the sample size (for each aggregation) equal, some output states will
-be ignored. As a result, the sum of the array elements may not sum to one.</p>
+<dd><p>Get callable based on circuit.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-class docutils literal notranslate"><span class="pre">TensorType</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">TensorType</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">TensorType</span></code>]</p>
 </dd>
 </dl>
@@ -242,13 +283,13 @@ be ignored. As a result, the sum of the array elements may not sum to one.</p>
 <span class="sig-name descname"><span class="pre">preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_max</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/vc/models.html#ProbabilitiesModel.preprocess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vc.models.ProbabilitiesModel.preprocess" title="Permalink to this definition"></a></dt>
 <dd><p>Maps input <code class="docutils literal notranslate"><span class="pre">X</span></code> in the range <code class="docutils literal notranslate"><span class="pre">min_max</span></code> to <span class="math notranslate nohighlight">\((-\pi, \pi]\)</span>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<code class="xref py py-const docutils literal notranslate"><span class="pre">ArrayLike</span></code>) – input data with shape (<cite>n_samples</cite>, <cite>n_features</cite>).</p></li>
 <li><p><strong>min_max</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – minimum value and maximum value.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">dtype</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float64</span></code>]]</p>
 </dd>
 </dl>
@@ -266,7 +307,7 @@ be ignored. As a result, the sum of the array elements may not sum to one.</p>
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backend</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_classes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/vc/models.html#QModel.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vc.models.QModel.__init__" title="Permalink to this definition"></a></dt>
 <dd><p>Init QModel.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>backend</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]) – dictionary of the form <code class="docutils literal notranslate"><span class="pre">{&quot;name&quot;:</span> <span class="pre">str,</span> <span class="pre">&quot;options&quot;:</span> <span class="pre">dict}</span></code>,
 where the value for <code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span></code> is the name of a PennyLane device and
@@ -283,7 +324,7 @@ when creating the device. Example: <code class="docutils literal notranslate"><s
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_init_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">random</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/vc/models.html#QModel.get_init_weights"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vc.models.QModel.get_init_weights" title="Permalink to this definition"></a></dt>
 <dd><p>Generate weights to be used as initial trainable parameters.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">dtype</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float64</span></code>]]</p>
 </dd>
 </dl>
@@ -294,7 +335,7 @@ when creating the device. Example: <code class="docutils literal notranslate"><s
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_qfunc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/vc/models.html#QModel.get_qfunc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vc.models.QModel.get_qfunc" title="Permalink to this definition"></a></dt>
 <dd><p>Generate and return a quantum function.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-class docutils literal notranslate"><span class="pre">TensorType</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">TensorType</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">TensorType</span></code>]</p>
 </dd>
 </dl>
@@ -305,7 +346,7 @@ when creating the device. Example: <code class="docutils literal notranslate"><s
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_max</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/vc/models.html#QModel.preprocess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vc.models.QModel.preprocess" title="Permalink to this definition"></a></dt>
 <dd><p>Convert <code class="docutils literal notranslate"><span class="pre">X</span></code> to features. This function should set <code class="docutils literal notranslate"><span class="pre">self.n_qubits</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">dtype</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float64</span></code>]]</p>
 </dd>
 </dl>
@@ -318,7 +359,7 @@ when creating the device. Example: <code class="docutils literal notranslate"><s
 <span class="sig-prename descclassname"><span class="pre">vc.models.</span></span><span class="sig-name descname"><span class="pre">get_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_classes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/vc/models.html#get_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vc.models.get_model" title="Permalink to this definition"></a></dt>
 <dd><p>Create instance of a quantum model.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>model</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]) – dictionary of the form <code class="docutils literal notranslate"><span class="pre">{&quot;name&quot;:</span> <span class="pre">str,</span> <span class="pre">&quot;options&quot;:</span> <span class="pre">dict}</span></code>.
 The value for <code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span></code> is used to determine the model class.
@@ -330,10 +371,10 @@ key in the value for <code class="docutils literal notranslate"><span class="pre
 <li><p><strong>n_classes</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – number of classes.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="#vc.models.QModel" title="vc.models.QModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">QModel</span></code></a></p>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>An instance of a quantum model.</p>
 </dd>
 </dl>
@@ -352,7 +393,7 @@ key in the value for <code class="docutils literal notranslate"><span class="pre
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023-2023, TNO Quantum.</p>
+    <p>&#169; Copyright 2023-2023, TNO Quantum Code Lab.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

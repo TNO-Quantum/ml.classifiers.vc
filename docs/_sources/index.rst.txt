@@ -1,11 +1,13 @@
 .. tno.quantum.ml.classifiers.vc documentation master file, created by
-   sphinx-quickstart on Mon Feb 13 10:20:56 2023.
+   sphinx-quickstart on Thu Jul  6 13:42:24 2023.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+
 TNO Quantum
 ===========
-TNO Quantum provides generic software components aimed at facilitating the development of quantum applications.
+TNO Quantum provides generic software components aimed at facilitating the development
+of quantum applications.
 
 VC
 --
@@ -45,6 +47,8 @@ classification based on the
     vc = VariationalClassifier()
     vc = vc.fit(X_training, y_training)
     predictions_validation = vc.predict(X_validation)
+
+More elaborate examples can be found in the `examples repository <https://github.com/TNO-Quantum/examples>`_.
 
 Backends
 --------
@@ -89,14 +93,14 @@ by PennyLane can be specified by the ``backend`` keyword:
 Quantum Models
 --------------
 A quantum model defines a quantum circuit and a strategy for classical post-processing
-of measurements. Currently, two models are available:
+of measurements. Currently, three models are available:
 
 * The ``"expected_values_model"``, as implemented by the :py:class:`~vc.models.ExpectedValuesModel` class
   (see :py:meth:`~vc.models.ExpectedValuesModel.get_qfunc` for details on the post-processing strategy).
-* The ``"probabilities_model"``, as implemented by the :py:class:`~vc.models.ProbabilitiesModel` class
-  (see :py:meth:`~vc.models.ProbabilitiesModel.get_qfunc` for details on the post-processing strategy).
+* The ``"modulo_model"``, as implemented by the :py:class:`~vc.models.ModuloModel` class.
+* The ``"parity_model"``, as implemented by the :py:class:`~vc.models.ParityModel` class.
 
-For example, the ``"probabilities_model"`` can be specified with the
+For example, the ``"modulo_model"`` can be specified with the
 ``model`` keyword as follows:
 
 .. code-block:: python
@@ -109,7 +113,7 @@ For example, the ``"probabilities_model"`` can be specified with the
     )
     vc = VariationalClassifier(
         model={
-            "name": "probabilities_model",
+            "name": "modulo_model",
             "options": {"n_layers": 2, "n_trainable_sublayers": 2, "scaling": 0.5},
         },
     )
@@ -128,13 +132,15 @@ Support for PyTorch Optimizers
 The currently supported optimizers can be found in the :py:mod:`~vc.optimizers` module.
 Other PyTorch optimizers can be added in :py:func:`~vc.optimizers.get_optimizer`.
 
-(End)use Limitations
---------------------
-The content of this software may solely be used for applications that comply with international export control laws.
 
 .. toctree::
    :maxdepth: 4
-   :hidden:
-   :caption: Contents
+   :caption: Contents:
 
    vc
+
+
+
+(End)use Limitations
+--------------------
+The content of this software may solely be used for applications that comply with international export control laws.
