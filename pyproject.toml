@@ -28,7 +28,7 @@ ignore-signatures="yes"
 [tool.tbump]
 
 [tool.tbump.version]
-current = "1.0.1"
+current = "2.0.2"
 regex = '''
 \d+\.\d+\.\d+(-(.*))?
 '''

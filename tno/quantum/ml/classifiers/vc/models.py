@@ -5,6 +5,7 @@ interface and update :py:func:`~vc.models.get_model`.
 """
 import copy
 from abc import ABC, abstractmethod
+from functools import partial
 from typing import Any, Callable, Dict, Tuple, Type, Union
 
 import numpy as np
@@ -14,8 +15,6 @@ import torch
 from numpy.random import RandomState
 from numpy.typing import ArrayLike, NDArray
 from torchtyping import TensorType
-
-from tno.quantum.ml.classifiers.vc.utils import get_bin, get_decimal
 
 # pylint: disable=invalid-name
 # pylint: disable=too-many-arguments
@@ -202,8 +201,8 @@ class ExpectedValuesModel(QModel):
         return _process_measurement
 
 
-class ProbabilitiesModel(QModel):
-    """Model that uses angle encoding and state probabilities."""
+class ProbabilitiesModel(QModel, ABC):
+    """Generic model that uses probabilities."""
 
     def __init__(
         self,
@@ -233,7 +232,7 @@ class ProbabilitiesModel(QModel):
             n_layers: number of layers in $U(x)$ (equal to $L$).
             n_trainable_sublayers: number of layers for each $W$.
             scaling: scaling to apply to the preprocessed data, see
-                     :py:meth:`~vc.models.ExpectedValuesModel.preprocess`.
+                     :py:meth:`~vc.models.ProbabilitiesModel.preprocess`.
         """
         super().__init__(backend, n_classes)
         self.n_layers = n_layers
@@ -315,201 +314,129 @@ class ProbabilitiesModel(QModel):
         return pennylane.expval(pennylane.PauliZ(0))
 
     def get_qfunc(self) -> Callable[[TensorType, TensorType], TensorType]:
-        """Define callable based on circuit.
-
-        This callable will aggregate (by averaging) the probabilities per output
-        state into an array with as many elements as classes we have. Note: in order
-        to make the sample size (for each aggregation) equal, some output states will
-        be ignored. As a result, the sum of the array elements may not sum to one.
-        """
+        """Get callable based on circuit."""
         dev = _get_device(self.backend, self.n_qubits)
         qnode = pennylane.QNode(self._circuit, dev, interface="torch")
-
-        def _process_measurement(
-            weights: TensorType,
-            x: TensorType,
-            qnode: pennylane.QNode = qnode,
-            n_classes: int = self.n_classes,
-        ) -> TensorType:
-            probs: TensorType = qnode(weights, x)
-            if n_classes > 2:
-                aggregated_probs = []
-                for class_id in range(n_classes):
-                    aggregated_probs.append(
-                        probs[class_id::n_classes][: probs.numel() // n_classes].sum()
-                    )
-                return torch.stack(aggregated_probs).squeeze()
-            return probs
-
-        return _process_measurement
-
-
-class ParityModel(QModel):
-    """Model that uses angle encoding and parity post-processing."""
-
-    def __init__(
-        self,
-        backend: Dict[str, Any],
-        n_classes: int,
-        n_layers: int = 2,
-        n_trainable_sublayers: int = 2,
-        scaling: float = 0.5,
-    ) -> None:
-        r"""Init ParityModel.
-
-        This model implements a unitary $U(x)$ of the form:
-
-        .. math::
-            U(x) = W_{L + 1} \cdot S(x) \cdot W_{L} \cdot \ldots
-            \cdot W_{2} \cdot S(x) \cdot W_{1}
-
-        where:
-
-            - $x$ is the data to encode,
-            - $S$ is an encoding circuit,
-            - $W$ is a trainable circuit.
-
-        Args:
-            backend: see docstring of :py:class:`~vc.models.QModel`.
-            n_classes: see docstring of :py:class:`~vc.models.QModel`.
-            n_layers: number of layers in $U(x)$ (equal to $L$).
-            n_trainable_sublayers: number of layers for each $W$.
-            scaling: scaling to apply to the preprocessed data, see
-                     :py:meth:`~vc.models.ExpectedValuesModel.preprocess`.
-        """
-        super().__init__(backend, n_classes)
-        self.n_layers = n_layers
-        self.n_trainable_sublayers = n_trainable_sublayers
-        self.scaling = scaling
-
-    def preprocess(
-        self, X: ArrayLike, min_max: Tuple[float, float]
-    ) -> NDArray[np.float_]:
-        r"""Maps input ``X`` in the range ``min_max`` to $(-\pi, \pi]$.
-
-        Args:
-            X: input data with shape (`n_samples`, `n_features`).
-            min_max: minimum value and maximum value.
-        """
-        # Coerce into an ndarray
-        X = np.asarray(X)
-
-        # Convert to angles between -pi and pi
-        angles = 2 * np.pi * (X - min_max[0]) / (min_max[1] - min_max[0]) - np.pi
-
-        # Set number of qubits required by model and validate
-        self.n_qubits = angles.shape[1]
-        if self.n_classes > 2**self.n_qubits:
-            raise ModelError(
-                "The number of classes should be less than or equal to 2 to the power"
-                "of the number of features."
-            )
-
-        return angles
-
-    def _S(self, x: TensorType) -> None:
-        """Define encoding circuit."""
-        pennylane.AngleEmbedding(
-            features=self.scaling * x, wires=range(self.n_qubits), rotation="X"
-        )
-
-    def _W(self, w: TensorType) -> None:
-        """Define trainable circuit."""
-        pennylane.StronglyEntanglingLayers(w, wires=range(self.n_qubits))
-
-    def get_init_weights(
-        self, random: bool, random_state: RandomState
-    ) -> NDArray[np.float_]:
-        r"""Get init weights between $0$ and $2\pi$."""
-        array_shape = self.n_layers + 1, self.n_trainable_sublayers, self.n_qubits, 3
-        if random:
-            return 2 * np.pi * random_state.random(size=array_shape)
-
-        return np.zeros(array_shape)
-
-    def _circuit(
-        self,
-        weights: TensorType,
-        x: TensorType,
-    ) -> pennylane.measurements.MeasurementProcess:
-        """Create modelled circuit.
-
-        Args:
-            weights: weights for trainable circuits
-            x: data for the encoding circuit
-
-        Returns:
-            Measurements (probabilities) if the number of classes
-            is greater than 2; otherwise measurements (expected values)
-            are returned.
-        """
-        # Define circuit
-        for w in weights[:-1, :, :, :]:
-            self._W(w)
-            self._S(x)
-        self._W(weights[-1, :, :, :])
-
-        # If there are more than 2 classes, measure probabilities
-        if self.n_classes > 2:
-            return pennylane.probs(wires=range(self.n_qubits))
-
-        # Else measure the expected value for the first qubit
-        return pennylane.expval(pennylane.PauliZ(0))
+        return partial(self._process_measurement, qnode=qnode, n_classes=self.n_classes)
 
     @staticmethod
-    def get_class_from_bit_array(bit_array: NDArray[np.uint8], m: int) -> int:
-        r"""Post-processing step that assigns a class to an n-bit string b.
-        Assignment is based on the parity of the bit string according to
-        the following equation:
+    @abstractmethod
+    def _process_measurement(
+        weights: TensorType,
+        x: TensorType,
+        qnode: pennylane.QNode,
+        n_classes: int,
+    ) -> TensorType:
+        """Define post-processing strategy."""
 
-        .. math::
-            f(b) = \left[b_0 ... b_{m-2}\left(\bigoplus_{i=m-1}^{n-1} b_i\right) \right]_{10},
 
-        where:
+class ModuloModel(ProbabilitiesModel):
+    r"""Model that uses post-processing with modulo.
 
-            - $m=\lceil \log_2(M) \rceil$ with `M` being the number of classes,
-            - $n$ is the number of qubits,
-            - $[\cdot]_{10}$ is the decimal representation of the argument.
+    See docstring of :py:class:`.vc.models.ProbabilitiesModel`.
+
+    The post-processing strategy assigns a class to an $n$-bit string
+    $b$ according to the following formula:
+
+    .. math::
+        f(b) = \left[b\right]_{10} \mod M
+
+    where:
+
+        - $M$ is the number of classes,
+        - $[\cdot]_{10}$ is the decimal representation of the argument.
+    """
+
+    @staticmethod
+    def _process_measurement(
+        weights: TensorType,
+        x: TensorType,
+        qnode: pennylane.QNode,
+        n_classes: int,
+    ) -> TensorType:
+        """Define post-processing strategy."""
+        measurement: TensorType = qnode(weights, x)
+        if n_classes > 2:
+            aggregated_measurement = []
+            for class_id in range(n_classes):
+                aggregated_measurement.append(
+                    measurement[class_id::n_classes][
+                        : measurement.numel() // n_classes
+                    ].sum()
+                )
+            return torch.stack(aggregated_measurement).squeeze()
+        return measurement
+
+
+class ParityModel(ProbabilitiesModel):
+    r"""Model that uses parity post-processing.
+
+    See docstring of :py:class:`.vc.models.ProbabilitiesModel`.
+
+    The post-processing strategy assigns a class to an $n$-bit string $b$
+    according to the following formula:
+
+    .. math::
+        f(b) = \left[b_0 ... b_{m-2}\left(\bigoplus_{i=m-1}^{n-1} b_i\right) \right]_{10}
+
+    where:
+
+        - $m=\lceil \log_2(M) \rceil$ with $M$ being the number of classes,
+        - $n$ is the number of bits,
+        - $[\cdot]_{10}$ is the decimal representation of the argument.
+
+    Reference: `"Quantum Policy Gradient Algorithm with Optimized Action Decoding"
+    by Meyer et al. <https://arxiv.org/abs/2212.06663v1>`_
+    """
+
+    @staticmethod
+    def _f(idx: int, n_bits_in: int, n_bits_out: int) -> int:
+        """Post-processing function.
+
+        Assigns a class index (an integer) to an arbitrary integer
+        (corresponding to a measured bit string).
 
         Args:
-            bit_array: n-bit array b
-            m: log of the total number of classes
+            idx: state index.
+            n_bits_in: number of bits used for the input index.
+            n_bits_out: number of bits to be used for the output class index.
 
         Returns:
-            Class index
+            Class index assigned.
         """
-        if m == 1:
-            return np.count_nonzero(bit_array) % 2
+        idx_bit_array = np.array(
+            list(map(int, [*np.binary_repr(idx, width=n_bits_in)]))
+        )
+        class_bit_array = idx_bit_array[-n_bits_out:]
+        if n_bits_out < n_bits_in:
+            class_bit_array[0] = idx_bit_array[: -(n_bits_out - 1)].sum() % 2
 
-        class_array = np.array(np.flip(bit_array[-m + 1 :]), ndmin=1)
-        parity = np.array(np.count_nonzero(bit_array[: -m + 1]) % 2, ndmin=1)
-        return get_decimal(np.concatenate((class_array, parity)))
+        return int("".join([str(elem) for elem in np.flip(class_bit_array)]), 2)
 
-    def get_qfunc(self) -> Callable[[TensorType, TensorType], TensorType]:
-        """Define callable based on circuit."""
-        dev = _get_device(self.backend, self.n_qubits)
-        qnode = pennylane.QNode(self._circuit, dev, interface="torch")
-
-        def _process_measurement(
-            weights: TensorType,
-            x: TensorType,
-            qnode: pennylane.QNode = qnode,
-            n_classes: int = self.n_classes,
-        ) -> TensorType:
-            probs: TensorType = qnode(weights, x)
-            if n_classes > 2:
-                aggregated_probs = [torch.zeros(1) for _ in range(self.n_classes)]
-                m = n_classes.bit_length()
-                for i, prob in enumerate(probs):
-                    bit_array = get_bin(i, self.n_qubits)
-                    class_id = self.get_class_from_bit_array(bit_array, m)
-                    if class_id >= self.n_classes:
-                        continue
-                    aggregated_probs[class_id] += prob
-                return torch.stack(aggregated_probs).squeeze()
-            return probs
-
-        return _process_measurement
+    @staticmethod
+    def _process_measurement(
+        weights: TensorType,
+        x: TensorType,
+        qnode: pennylane.QNode,
+        n_classes: int,
+    ) -> TensorType:
+        """Define post-processing strategy."""
+        measurement: TensorType = qnode(weights, x)
+        if n_classes > 2:
+            n_bits_in = int(np.log2(measurement.numel()))
+            n_bits_out = int(np.ceil(np.log2(n_classes)))
+            aggregated_measurement = [
+                torch.zeros(1, requires_grad=False) for _ in range(n_classes)
+            ]
+            for idx, prob in enumerate(measurement):
+                class_id = ParityModel._f(idx, n_bits_in, n_bits_out)
+                if class_id >= n_classes:
+                    continue
+                aggregated_measurement[class_id] = (
+                    aggregated_measurement[class_id] + prob
+                )
+            return torch.stack(aggregated_measurement).squeeze()
+        return measurement
 
 
 def get_model(
@@ -540,7 +467,7 @@ def get_model(
     models: Dict[str, Type[QModel]]
     models = {
         "expected_values_model": ExpectedValuesModel,
-        "probabilities_model": ProbabilitiesModel,
+        "modulo_model": ModuloModel,
         "parity_model": ParityModel,
     }
     if model["name"] not in models:

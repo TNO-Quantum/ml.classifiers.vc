@@ -6,4 +6,4 @@
 from tno.quantum.ml.classifiers.vc.variational_classifier import VariationalClassifier
 
 __all__ = ["VariationalClassifier"]
-__version__ = "1.0.1"
+__version__ = "2.0.2"
