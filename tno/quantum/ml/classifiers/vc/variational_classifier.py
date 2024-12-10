@@ -8,6 +8,7 @@ Usage:
     vc = vc.fit(X_training, y_training, n_iter=60)
     predictions = vc.predict(X_validation)
 """
+
 from __future__ import annotations
 
 import warnings
@@ -184,9 +185,7 @@ class VariationalClassifier(ClassifierMixin, BaseEstimator):  # type:ignore[misc
             y_batch = y[batch_index]
 
             # Compute predictions and loss
-            predictions = torch.stack(
-                [qfunc(weights, x) + bias for x in X_preprocessed_batch]
-            ).squeeze()
+            predictions = qfunc(weights, X_preprocessed_batch) + bias
 
             loss_func: torch.nn.modules.loss._WeightedLoss
             if self.classes_.size > 2:
@@ -242,9 +241,7 @@ class VariationalClassifier(ClassifierMixin, BaseEstimator):  # type:ignore[misc
 
         # Predict
         qfunc = qmodel.get_qfunc()
-        predictions_tensor = torch.stack(
-            [qfunc(weights, x) + bias for x in X_preprocessed]
-        ).squeeze()
+        predictions_tensor = qfunc(weights, X_preprocessed) + bias
 
         if self.classes_.size > 2:
             predictions_tensor_2d = torch.atleast_2d(
