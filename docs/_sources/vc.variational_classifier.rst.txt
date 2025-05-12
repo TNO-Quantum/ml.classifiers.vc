@@ -1,7 +1,0 @@
-vc.variational\_classifier module
-=================================
-
-.. automodule:: vc.variational_classifier
-   :members:
-   :undoc-members:
-   :show-inheritance:

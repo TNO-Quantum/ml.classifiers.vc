@@ -18,5 +18,5 @@ contact:
 repository-code: https://github.com/TNO-Quantum/ml.classifiers.vc
 repository-artifact: https://pypi.org/project/tno.quantum.ml.classifiers.vc
 title: TNO Quantum - Machine Learning - Variational Classifier
-version: v2.0.2
-date-released: 2023-07-06
+version: v3.0.1
+date-released: 2025-05-12

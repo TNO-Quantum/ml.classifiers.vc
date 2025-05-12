@@ -17,7 +17,7 @@ functions.
 
 ## Documentation
 
-Documentation of the `tno.quantum.ml.classifiers.vc` package can be found [here](https://tno-quantum.github.io/ml.classifiers.vc/).
+Documentation of the `tno.quantum.ml.classifiers.vc` package can be found [here](https://tno-quantum.github.io/documentation/).
 
 
 ## Install
@@ -45,7 +45,6 @@ from tno.quantum.ml.classifiers.vc import VariationalClassifier
 from tno.quantum.ml.datasets import get_iris_dataset
 
 X_training, y_training, X_validation, y_validation = get_iris_dataset()
-vc = VariationalClassifier()
-vc = vc.fit(X_training, y_training)
-predictions_validation = vc.predict(X_validation)
+vc = VariationalClassifier().fit(X_training, y_training, n_iter=5)
+predictions = vc.predict(X_validation)
 ```
